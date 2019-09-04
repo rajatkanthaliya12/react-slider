@@ -1,0 +1,57 @@
+@import '../../theme/theme';
+.side-drawer {
+  height: 100%;
+  @include themify($themes) {
+    background-color: themed('backgroundColor');  
+    right: themed('right');  
+    left: themed('left'); 
+    transform : themed('transform'); 
+  }
+  box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  width: 50%;
+  z-index: 200;
+  transition: transform 0.3s ease-out;
+}
+
+.side-drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-strip{
+  position: fixed;
+  top: 0;
+  width: 15px;
+  @include themify($themes) {
+    background-color: themed('backgroundColor');  
+    right: themed('right');  
+    left: themed('left');   
+  }
+  height: 100%;
+}
+.close {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
